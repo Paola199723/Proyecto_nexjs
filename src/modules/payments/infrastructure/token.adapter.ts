@@ -12,6 +12,8 @@ export class TokenAdapter implements TokenPort {
 
   async createToken(cardData: any): Promise<CardToken> {
     const tokenUrl = this.configService.get<string>('SANDBOX_TOKEN_URL');
+    const KER_PUBLIC = this.configService.get<string>('SANDBOX_PUBLIC_KEY');
+
     
     const response = await this.httpService.axiosRef.post(
         tokenUrl, // <- URL correcta
@@ -19,8 +21,7 @@ export class TokenAdapter implements TokenPort {
       {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer pub_stagtest_g2u0HQd3ZMh05hsSgTS2lUV8t3s4mOt7', // <- API key pública
-        },
+          Authorization: `Bearer ${KER_PUBLIC}`},
       }
     );
     return response.data; // ajusta esto si usas una entidad CardToken como clase
