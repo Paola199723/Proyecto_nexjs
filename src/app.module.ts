@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TransactionsModule } from './modules/transactions/transactions.module';
-
 
 @Module({
   imports: [
@@ -16,6 +16,9 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
       synchronize: true, // Crea las tablas automáticamente (NO usar en producción)
     }),
     TransactionsModule,
+    ConfigModule.forRoot({
+      isGlobal: true, // Así no necesitas importar en cada módulo
+    }),
   ],
 })
 export class AppModule {}
