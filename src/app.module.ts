@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MerchantModule } from './modules/payments/merchant.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
+
 
 @Module({
   imports: [
@@ -15,6 +17,7 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
       autoLoadEntities: true, // Carga las entidades automáticamente
       synchronize: true, // Crea las tablas automáticamente (NO usar en producción)
     }),
+    MerchantModule,
     TransactionsModule,
     ConfigModule.forRoot({
       isGlobal: true, // Así no necesitas importar en cada módulo
