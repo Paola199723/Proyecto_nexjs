@@ -1,21 +1,21 @@
-
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { TokenService } from './application/token.service';
-import { TokenPort } from './domain/token.port';
-import { TokenAdapter } from './infrastructure/token.adapter';
-import { TokenController } from './infrastructure/token.controller';
+import { PaymentService } from './application/payments.service';
+import { PaymentsPort } from './domain/payments.port';
+import { PaymentsAdapter } from './infrastructure/payments.adapter';
+import { PaymentsController } from './infrastructure/payments.controller';
 
 @Module({
   imports: [HttpModule],
-  controllers: [TokenController],
+  controllers: [PaymentsController],
   providers: [
-    TokenService,
-    TokenAdapter,
+    PaymentService,
+    PaymentsAdapter,
     {
-      provide: TokenPort, // Aquí enlazas la abstracción con la implementación
-      useClass: TokenAdapter,
+      provide: PaymentsPort,
+      useClass: PaymentsAdapter,
     },
   ],
+  exports: [PaymentService],
 })
-export class PaymentsModule {}
+export class PaymentstModule {}

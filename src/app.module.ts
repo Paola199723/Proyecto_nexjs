@@ -2,7 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MerchantModule } from './modules/payments/merchant.module';
-import { TransactionsModule } from './modules/transactions/transactions.module';
+import { PaymentstModule } from './modules/payments/payments.module';
+import { TokenModule } from './modules/payments/token.module';
+
 
 
 @Module({
@@ -18,7 +20,8 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
       synchronize: true, // Crea las tablas automáticamente (NO usar en producción)
     }),
     MerchantModule,
-    TransactionsModule,
+    TokenModule,
+    PaymentstModule,
     ConfigModule.forRoot({
       isGlobal: true, // Así no necesitas importar en cada módulo
     }),
