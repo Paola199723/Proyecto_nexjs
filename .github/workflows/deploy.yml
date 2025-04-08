@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CLUSTER_NAME: tu-cluster
+      CLUSTER_NAME: wom-cluster
       REGION: us-east-1
       EKS_NAMESPACE: default
       IMAGE_NAME: paol123/nestjs-app
