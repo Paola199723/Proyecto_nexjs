@@ -42,5 +42,5 @@ jobs:
 
       - name: Deploy to EKS
         run: |
-          kubectl set image deployment.yaml nestjs-app=$IMAGE_NAME:$IMAGE_TAG -n $EKS_NAMESPACE
+          kubectl set image k8s/deployment.yaml nestjs-app=$IMAGE_NAME:$IMAGE_TAG -n $EKS_NAMESPACE
           kubectl rollout status deployment/nestjs-app -n $EKS_NAMESPACE
